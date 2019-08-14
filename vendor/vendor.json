@@ -1,6 +1,13 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [],
+	"package": [
+		{
+			"checksumSHA1": "xItbCaC+CuKm4zvWIXN1DXlK4SQ=",
+			"path": "github.com/keybase/go-keybase-chat-bot/kbchat",
+			"revision": "bc54fd9cf83bbb8f47e8709cf7037894e61dac0b",
+			"revisionTime": "2019-08-12T13:48:59Z"
+		}
+	],
 	"rootPath": "github.com/mmaxim/hibot"
 }
