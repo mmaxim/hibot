@@ -68,7 +68,8 @@ Spread cheer`, s.getCommandBang()),
 
 func (s *BotServer) maybeReact(msg kbchat.Message) error {
 	if strings.Trim(strings.Split(msg.Content.Text.Body, " ")[0], " ") == s.getCommandBang() {
-		return s.kbc.ReactByConvID(msg.ConversationID, msg.MsgID, ":wave:")
+		_, err := s.kbc.ReactByConvID(msg.ConversationID, msg.MsgID, ":wave:")
+		return err
 	}
 	return nil
 }
@@ -80,11 +81,11 @@ func (s *BotServer) Start() (err error) {
 	}); err != nil {
 		return err
 	}
-	if err := s.kbc.AdvertiseCommands(s.makeAdvertisement()); err != nil {
+	if _, err := s.kbc.AdvertiseCommands(s.makeAdvertisement()); err != nil {
 		s.debug("advertise error: %s", err)
 		return err
 	}
-	if err := s.kbc.SendMessageByTlfName(s.kbc.GetUsername(), "I'm running."); err != nil {
+	if _, err := s.kbc.SendMessageByTlfName(s.kbc.GetUsername(), "I'm running."); err != nil {
 		s.debug("failed to announce self: %s", err)
 		return err
 	}
